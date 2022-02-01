@@ -1,36 +1,33 @@
-import java.util.HashSet;
+package practice;
 
-public class CheckSum {
+import java.util.Scanner;
 
+public class SumOfTwo {
 	
-		static void printpairs(int arr[], int sum)
-		{
-			HashSet<Integer> s = new HashSet<Integer>();
-			for (int i = 0; i < arr.length; ++i)
-			{
-				int temp = sum - arr[i];
-
-				// checking for condition
-				if (s.contains(temp)) {
-					System.out.println(
-						"Pair with given sum "
-						+ sum + " is (" + arr[i]
-						+ ", " + temp + ")");
+	public static void verifySum(int arr[], int sum) {
+		int count =0;
+		for(int i = 0;i<arr.length-1;i++) {
+			for(int j=i+1;j<arr.length;j++) {
+				if(arr[i]+arr[j]==sum) {
+					if(count>0) {
+						System.out.print(" or ");
+					}
+					System.out.print("{"+arr[i]+", "+arr[j]+"} = "+sum);
+					count++;
 				}
-				s.add(arr[i]);
 			}
 		}
-
-		// Driver Code
-		public static void main(String[] args)
-		{
-			int A[] = { 1, 4, 45, 6, 10, 8, 12, 15 };
-			int n = 16;
-			printpairs(A, n);
+		if(count==0) {
+		System.out.println("no such number");
 		}
 	}
-
-	// This article is contributed by Aakash Hasija
-
-
-
+	
+	public static void main(String ars[]) {
+		int arr[]= {1,5,8,9,11,18,4,2,7};
+		System.out.println("Please Enter The Sum");
+		Scanner scan = new Scanner(System.in);
+		int sum = scan.nextInt();
+		verifySum(arr , sum);
+		scan.close();
+	}
+}
